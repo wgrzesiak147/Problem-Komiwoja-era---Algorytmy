@@ -9,5 +9,8 @@ int main(int argc, char *argv[])
     w.show();
     qDebug() << "***Test code KW";
 
+    int i =10;
+    QString name = "siema tu Wojtek";
+    QString name2 = "TROLOLO";
     return a.exec();
 }
