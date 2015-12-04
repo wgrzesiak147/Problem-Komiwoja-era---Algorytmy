@@ -16,7 +16,9 @@ public:
     bool deleteEdge(unsigned int startNode, unsigned int destinationNode);
     unsigned int getDistance(unsigned int startNode, unsigned int destinationNode);
     unsigned int getTime(unsigned int startNode, unsigned int destinationNode);
+    unsigned int getSize();
     bool isFull();
+
 
 signals:
 

@@ -82,6 +82,11 @@ unsigned int AdjacencyMatrix::getTime(unsigned int startNode, unsigned int desti
     }
 }
 
+unsigned int AdjacencyMatrix::getSize()
+{
+    return matrixSize;
+}
+
 bool AdjacencyMatrix::isFull()
 {
     bool isFull = false;
