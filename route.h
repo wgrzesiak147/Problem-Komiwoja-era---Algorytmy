@@ -14,7 +14,10 @@ public:
     //unsigned int getTime();
     unsigned int getLength(Route::costType costType = WITHOUT_TIME);
     bool insertNode(unsigned int position, unsigned int numberOfNode);
-    bool isValid();
+    void printRoute();
+    void clear();
+    int at(unsigned int position);
+
 
 
 
