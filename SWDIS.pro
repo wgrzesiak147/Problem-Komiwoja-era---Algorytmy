@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         dialog.cpp \
     adjacencymatrix.cpp \
-    route.cpp
+    route.cpp \
+    ialgorithm.cpp
 
 HEADERS  += dialog.h \
     adjacencymatrix.h \
-    route.h
+    route.h \
+    ialgorithm.h
 
 FORMS    += dialog.ui

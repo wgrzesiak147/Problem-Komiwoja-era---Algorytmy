@@ -3,6 +3,7 @@
 #include <QDebug>
 #include "adjacencymatrix.h"
 #include "route.h"
+#include "ialgorithm.h"
 
 int main(int argc, char *argv[])
 {
