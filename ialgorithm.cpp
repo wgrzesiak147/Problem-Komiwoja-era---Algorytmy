@@ -1,5 +1,6 @@
 #include "ialgorithm.h"
 #include <vector>
+#include <time.h>
 using namespace std;
 
 IAlgorithm::IAlgorithm()
@@ -8,12 +9,8 @@ IAlgorithm::IAlgorithm()
 }
 
 
-//implementacja algorytmu jako parametr macierz,wielkość macierzy, wektor miast które należy odwiedzić z czasami
-virtual Vector<int> IAlgorithm::calculateRoute(QPair<unsigned int,unsigned int> ** adjencyMatrix,int size,vector<QPair<int,int>> towns)=0;
-
-
 // generuje losowe rozwiazanie dla zadanej liczby miast
-Vector<int> IAlgorithm::randomSolution(int number)
+vector<int> IAlgorithm::randomSolution(int number)
 {
     //losowanie początkowego rozwiązania 'sol'
     vector<int> v;
@@ -37,8 +34,8 @@ Vector<int> IAlgorithm::randomSolution(int number)
 int IAlgorithm::cost(vector<int>& sol,QPair<unsigned int,unsigned int> ** adjencyMatrix,int size)
 {
     int cost = 0;
-    for (int i = 0; i != sol.size() - 1; i++)
-        cost += adjencyMatrix[sol[i]][sol[i + 1]];//trzeba sie tu jeszcze dostać do wartości i ją jakoś wyliczyć
+   // for (int i = 0; i != sol.size() - 1; i++)
+      //  cost += adjencyMatrix[sol[i]][sol[i + 1]];//trzeba sie tu jeszcze dostać do wartości i ją jakoś wyliczyć
     return cost;
 }
 
