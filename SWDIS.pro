@@ -16,11 +16,13 @@ SOURCES += main.cpp\
         dialog.cpp \
     adjacencymatrix.cpp \
     route.cpp \
-    ialgorithm.cpp
+    ialgorithm.cpp \
+    antscolony.cpp
 
 HEADERS  += dialog.h \
     adjacencymatrix.h \
     route.h \
-    ialgorithm.h
+    ialgorithm.h \
+    antscolony.h
 
 FORMS    += dialog.ui
