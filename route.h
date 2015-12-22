@@ -12,7 +12,7 @@ public:
     //explicit Route(unsigned int size,QObject *parent = 0);
     Route(unsigned int size, AdjacencyMatrix * graph ,QObject *parent = 0);
     //unsigned int getTime();
-    unsigned int getLength(Route::costType costType = WITHOUT_TIME);
+    unsigned int getCost(Route::costType costType = WITHOUT_TIME);
     bool insertNode(unsigned int position, unsigned int numberOfNode);
     void printRoute();
     void clear();

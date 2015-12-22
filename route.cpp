@@ -4,7 +4,7 @@
 Route::Route(unsigned int size, AdjacencyMatrix * graph ,QObject *parent): QObject(parent)
 {
     numberOfNodes = size;
-    for(int i=0; i<numberOfNodes; i++)
+    for(unsigned int i=0; i<numberOfNodes; i++)
     {
         route.append(-1);
     }
@@ -18,13 +18,17 @@ Route::Route(unsigned int size, AdjacencyMatrix * graph ,QObject *parent): QObje
     }
 }
 
-unsigned int Route::getLength(Route::costType costType)
+unsigned int Route::getCost(Route::costType costType)
 {
     unsigned int totalLength = 0;
+    unsigned int totalTime = 0;
+    unsigned int totalCost = 0;
+    unsigned int totalPenalty = 0;
+    double penaltyRatio = 1;
     switch(costType)
     {
     case WITHOUT_TIME:
-        for(int i=0; i<numberOfNodes; i++)
+        for(unsigned int i=0; i<numberOfNodes; i++)
         {
             if(i!=(numberOfNodes-1))
             {
@@ -35,11 +39,49 @@ unsigned int Route::getLength(Route::costType costType)
                 totalLength = totalLength + graphData->getDistance(route[i],route[0]);
             }
         }
-        return totalLength;
+        totalCost = totalLength;
+        return totalCost;
 
         break;
 
     case WITH_TIME:
+        for(unsigned int i=0; i<numberOfNodes; i++)
+        {
+            if((totalTime >= graphData->getStartTime(i)) && (totalTime <= graphData->getEndTime(i)))
+            {
+                qDebug() << "Node:" << i << "In time slot";
+            }
+            else
+            {
+                qDebug() << "Node:" << i << "Not in time slot";
+                if(totalTime < graphData->getStartTime(i))
+                {
+                    unsigned int penalty = (graphData->getStartTime(i) - totalTime) * penaltyRatio;
+                    totalPenalty = totalPenalty + penalty;
+                    qDebug() << "Penalty for node" << i << ":" << penalty;
+                }
+                else
+                {
+                    unsigned int penalty = (totalTime - graphData->getEndTime(i)) * penaltyRatio;
+                    totalPenalty = totalPenalty + penalty;
+                    qDebug() << "Penalty for node:" << i << "=" << penalty;
+                }
+            }
+            if(i != (numberOfNodes - 1))
+            {
+                totalTime = totalTime + graphData->getTime(route[i],route[i+1]);
+            }
+            else
+            {
+                totalTime = totalTime + graphData->getTime(route[i],route[0]);
+            }
+
+        }
+
+        totalLength = this->getCost(Route::WITHOUT_TIME);
+
+        totalCost = totalLength + totalPenalty;
+        return totalCost;
 
         break;
 
@@ -75,7 +117,7 @@ bool Route::insertNode(unsigned int position, unsigned int numberOfNode)
 void Route::printRoute()
 {
     qDebug() << "Route: ";
-    for(int i = 0; i < numberOfNodes; i++)
+    for(unsigned int i = 0; i < numberOfNodes; i++)
     {
         qDebug() << route.at(i);
     }
@@ -83,7 +125,7 @@ void Route::printRoute()
 
 void Route::clear()
 {
-    for(int i = 0; i < numberOfNodes; i++)
+    for(unsigned int i = 0; i < numberOfNodes; i++)
     {
         route[i]= -1;
     }

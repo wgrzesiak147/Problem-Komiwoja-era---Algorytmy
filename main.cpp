@@ -29,18 +29,23 @@ int main(int argc, char *argv[])
 
     qDebug() << "isFull:" << matrix->isFull(); //Ta funkcja służy do sprawdzania czy macierz jest wypełniona prawidłowo tzn czy jest pełna
 
+    qDebug() << "setTimeSlot:" << matrix->setTimeSlot(0,0,20); // Ta funkcja ustawia przedział czasowy dla danego węzła
+    qDebug() << "setTimeSlot:" << matrix->setTimeSlot(1,25,30); // Czas liczymy w minutach od 0. 0 to start podróży komiwojażera
+    qDebug() << "setTimeSlot:" << matrix->setTimeSlot(2,30,40); // Przedział czasowy podajemy w minutach od startu podróży
+
     Route route(3,matrix); //Tworzenie trasy Argumenty: ilość miejsc, wskaźnik do macierzy która przechowuje koszty (AdjacencyMatrix*)
     //ilość miejsc w trasie i liczba wierzchołków grafu muszą się zgadzać inaczej pewnie aplikacja się wywali
 
-    route.insertNode(0,2); //Dodawanie kolejnych punktów na trasie
+    route.insertNode(0,0); //Dodawanie kolejnych punktów na trasie
     route.insertNode(1,1); //Funkcja sprawdza czy wierzchołek który dodajecie już znajduje się na trasie
-    route.insertNode(2,0); //Jeżeli się znajduje to wyświetli ostrzeżenie i doda wierzchołek
+    route.insertNode(2,2); //Jeżeli się znajduje to wyświetli ostrzeżenie i doda wierzchołek
     //Argumenty: pozycja na trasie, numer wierzchołka
     //Poprawność trasy nie jest sprawdzana więc jak coś będzie nie tak to mogą się pojawiać dziwne błędy
 
     //route.clear(); //Czyszczenie trasy
     route.printRoute(); //Wyświetlanie trasy
-    qDebug() << "getLength:" << route.getLength(Route::WITHOUT_TIME); //Funkcja do sprawdzania kosztu trasy
+    qDebug() << "getCost(WITHOUT_TIME):" << route.getCost(Route::WITHOUT_TIME); //Funkcja do sprawdzania kosztu trasy
+    qDebug() << "getCost(WITH_TIME):" << route.getCost(Route::WITH_TIME); //Funkcja liczy koszt z uwzględnieniem przedziałów czasowych
     //Docelowo będzie obsługiwała dwa tryby liczenia trasy WITH_TIME i WITHOUT_TIME. Teraz działa tylko ten drugi.
     //Można używać bez agrumentu, wtedy jest liczony koszt bez uwzględniania czasu
 
