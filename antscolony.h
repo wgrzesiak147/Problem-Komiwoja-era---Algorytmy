@@ -1,11 +1,13 @@
 #ifndef ANTSCOLONY_H
 #define ANTSCOLONY_H
+
 #include "ialgorithm.h"
 
-class Antscolony:public IAlgorithm
+class AntsColony : public IAlgorithm
 {
 public:
-    Antscolony();
+    AntsColony();
+    Route * calculateRoute(AdjacencyMatrix *adjacencyMatrix, unsigned int size);
 };
 
 #endif // ANTSCOLONY_H

@@ -1,11 +1,12 @@
 #include "antscolony.h"
 
-Antscolony::Antscolony()
+AntsColony::AntsColony()
 {
 
 }
 
-void Antscolony::calculateRoute(QPair<unsigned int, unsigned int> **adjencyMatrix, int size, Vector<QPair>)
+Route * AntsColony::calculateRoute(AdjacencyMatrix *adjacencyMatrix, unsigned int size)
 {
-    //cały algorytm
+    //algorytm
 }
+

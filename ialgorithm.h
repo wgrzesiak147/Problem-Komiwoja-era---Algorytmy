@@ -2,19 +2,21 @@
 #define IALGORITHM_H
 
 #include <QObject>
-#include <vector>
+#include "adjacencymatrix.h"
+#include "route.h"
 
-using namespace std;
-class IAlgorithm : QObject
+class IAlgorithm : public QObject
 {
+    Q_OBJECT
 public:
-    IAlgorithm();
+    explicit IAlgorithm(QObject *parent = 0);
+    virtual Route * calculateRoute(AdjacencyMatrix * adjacencyMatrix, unsigned int size) = 0;
 
-   // Vector<int> IAlgorithm::calculateRoute(QPair** adjencyMatrix,int size,Vector<QPair>)=0;
-    virtual vector<int> calculateRoute(QPair<unsigned int,unsigned int> ** adjencyMatrix,int size,vector<QPair<int,int>>)=0;
-    vector<int> randomSolution(int);
-    int cost(vector<int>& sol,QPair<unsigned int,unsigned int> ** adjencyMatrix,int size);
+signals:
+    void started();
+    void finished();
 
+public slots:
 };
 
 #endif // IALGORITHM_H
