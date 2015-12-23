@@ -14,6 +14,8 @@ public:
     Route(unsigned int size, AdjacencyMatrix * graph ,QObject *parent = 0);
     //unsigned int getTime();
     unsigned int getCost(Route::costType costType = WITHOUT_TIME);
+    unsigned int getSize();
+    AdjacencyMatrix * getAdjacencyMatrix();
     bool insertNode(unsigned int position, unsigned int numberOfNode);
     void printRoute();
     void clear();

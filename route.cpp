@@ -92,6 +92,16 @@ unsigned int Route::getCost(Route::costType costType)
 
 }
 
+unsigned int Route::getSize()
+{
+    return numberOfNodes;
+}
+
+AdjacencyMatrix *Route::getAdjacencyMatrix()
+{
+    return graphData;
+}
+
 bool Route::insertNode(unsigned int position, unsigned int numberOfNode)
 {
     if(position < numberOfNodes)
