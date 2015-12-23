@@ -52,6 +52,13 @@ int main(int argc, char *argv[])
     //Dany element trasy możecie sprawdzić funkcją
     //int at(unsigned int position)
 
+    Route route2(3,matrix);
+    route2.makeRandomRoute(0); //Losowanie trasy. Trzeba podać wierzchołek startowy. Brak zabezpieczenia przed podaniem wierzchołka przekraczającego zakres.
+    route2.printRoute();
+    qDebug() << "getCost(WITHOUT_TIME):" << route2.getCost(Route::WITHOUT_TIME); //Funkcja do sprawdzania kosztu trasy
+    qDebug() << "getCost(WITH_TIME):" << route2.getCost(Route::WITH_TIME); //Funkcja liczy koszt z uwzględnieniem przedziałów czasowych
+
+
 
     //Test macierzy
     return a.exec();

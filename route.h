@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QVector>
+#include <QList>
 #include "adjacencymatrix.h"
 class Route : public QObject
 {
@@ -17,6 +18,7 @@ public:
     void printRoute();
     void clear();
     int at(unsigned int position);
+    void makeRandomRoute(unsigned int startNode);
 
 
 

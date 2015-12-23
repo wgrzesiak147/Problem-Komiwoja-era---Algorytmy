@@ -135,3 +135,25 @@ int Route::at(unsigned int position)
 {
     return route.at(position);
 }
+
+void Route::makeRandomRoute(unsigned int startNode)
+{
+    QList<unsigned int> nodeList;
+    unsigned int randNode = 0;
+    for(unsigned int i=0; i<numberOfNodes; i++)
+    {
+        if (i!=startNode)
+        {
+            nodeList.append(i);
+        }
+    }
+    this->insertNode(0,startNode);
+
+    for(unsigned int i=1; i<numberOfNodes; i++)
+    {
+        int position = qrand() % nodeList.size();
+        randNode = nodeList.at(position);
+        nodeList.removeAt(position);
+        this->insertNode(i,randNode);
+    }
+}
