@@ -17,6 +17,7 @@ public:
     unsigned int getSize();
     AdjacencyMatrix * getAdjacencyMatrix();
     bool insertNode(unsigned int position, unsigned int numberOfNode);
+    bool containsNode(unsigned int nodeNumber);
     void printRoute();
     void clear();
     int at(unsigned int position);

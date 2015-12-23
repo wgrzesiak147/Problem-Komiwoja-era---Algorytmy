@@ -13,8 +13,23 @@ Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix, unsig
 Route *GeneticAlgorithm::crossbreedRoutes(Route *firstRoute, Route *secondRoute)
 {
     Route * result = new Route(firstRoute->getSize(),firstRoute->getAdjacencyMatrix());
-    unsigned int firstPosition = qrand() % firstRoute->getSize();
-    unsigned int secondPosition = qrand() % firstRoute->getSize();
+    //QMap<unsigned int,unsigned int> nodeMap;
+    QList<unsigned int> unusedNodes;
+
+    unsigned int firstPosition = 0;
+    unsigned int secondPosition = 0;
+
+    do
+    {
+        firstPosition = qrand() % firstRoute->getSize();
+        secondPosition = qrand() % firstRoute->getSize();
+    }
+    while(!((firstPosition != 0) && (secondPosition != 0)));
+
+    for(unsigned int m = 1; m < firstRoute->getSize(); m++)
+    {
+        unusedNodes.append(m);
+    }
 
     if(firstPosition > secondPosition)
     {
@@ -24,7 +39,7 @@ Route *GeneticAlgorithm::crossbreedRoutes(Route *firstRoute, Route *secondRoute)
     }
     if(firstPosition == secondPosition)
     {
-        if(firstPosition != 0)
+        if(firstPosition > 1)
         {
             firstPosition = firstPosition - 1;
         }
@@ -32,13 +47,44 @@ Route *GeneticAlgorithm::crossbreedRoutes(Route *firstRoute, Route *secondRoute)
         {
             secondPosition = secondPosition + 1;
         }
-        for(unsigned int i = firstPosition; i<=secondPosition; i++)
-        {
-            result->insertNode(i,firstRoute->at(i));
-        }
 
     }
     result->insertNode(0,firstRoute->at(0));
+
+    for(unsigned int i = firstPosition; i<=secondPosition; i++)
+    {
+        result->insertNode(i,firstRoute->at(i));
+        unusedNodes.removeOne(firstRoute->at(i));
+        //nodeMap.insert(firstRoute->at(i),secondRoute->at(i));
+        //nodeMap.insert(secondRoute->at(i),firstRoute->at(i));
+    }
+    for(unsigned int j = 1; j < firstPosition; j++)
+    {
+        if(!result->containsNode(secondRoute->at(j)))
+        {
+            result->insertNode(j,secondRoute->at(j));
+            unusedNodes.removeOne(secondRoute->at(j));
+        }
+    }
+    for(unsigned int k = secondPosition + 1; k < firstRoute->getSize(); k++)
+    {
+        if(!result->containsNode(secondRoute->at(k)))
+        {
+            result->insertNode(k,secondRoute->at(k));
+            unusedNodes.removeOne(secondRoute->at(k));
+        }
+    }
+    for(unsigned int n = 1; n < firstRoute->getSize(); n++)
+    {
+        if(result->at(n) == -1)
+        {
+            unsigned int randomNodePosition = qrand() % unusedNodes.size();
+            result->insertNode(n,unusedNodes.at(randomNodePosition));
+            unusedNodes.removeAt(randomNodePosition);
+        }
+    }
+    //qDebug() << "First position:" << firstPosition << "Second position" << secondPosition;
+    return result;
 
 }
 

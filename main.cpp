@@ -4,6 +4,7 @@
 #include "adjacencymatrix.h"
 #include "route.h"
 #include "ialgorithm.h"
+#include "geneticalgorithm.h"
 
 int main(int argc, char *argv[])
 {
@@ -61,5 +62,36 @@ int main(int argc, char *argv[])
 
 
     //Test macierzy
+
+    //Moje testy, nie zwarcać na nie uwagi - KW ;)
+//    AdjacencyMatrix * adjMtrx = new AdjacencyMatrix(10);
+//    qDebug() << "Test1:";
+
+//    qDebug() << "Test2:";
+
+//    qDebug() << "Test3:";
+//    GeneticAlgorithm * genetic = new GeneticAlgorithm();
+//    qDebug() << "Test4:";
+
+//    for(int i = 0; i < 100000; i++)
+//    {
+//        Route * testRoute1 = new Route(10,adjMtrx);
+//        Route * testRoute2 = new Route(10,adjMtrx);
+//        testRoute1->makeRandomRoute(0);
+//        testRoute2->makeRandomRoute(0);
+
+//        qDebug() << "Route1:";
+//        testRoute1->printRoute();
+//        qDebug() << "Route2:";
+//        testRoute2->printRoute();
+
+//        qDebug() << "Result:";
+//        Route * resultOfCrossbreed = genetic->crossbreedRoutes(testRoute1,testRoute2);
+//        resultOfCrossbreed->printRoute();
+//    }
+
+//    qDebug() << "Koniec";
+
+    //Moje testy, nie zwarcać na nie uwagi - KW ;)
     return a.exec();
 }

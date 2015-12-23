@@ -124,6 +124,11 @@ bool Route::insertNode(unsigned int position, unsigned int numberOfNode)
     }
 }
 
+bool Route::containsNode(unsigned int nodeNumber)
+{
+    return route.contains(nodeNumber);
+}
+
 void Route::printRoute()
 {
     qDebug() << "Route: ";

@@ -4,6 +4,7 @@
 #include "ialgorithm.h"
 
 
+
 class GeneticAlgorithm : public IAlgorithm
 {
 public:

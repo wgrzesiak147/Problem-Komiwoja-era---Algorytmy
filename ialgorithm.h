@@ -2,6 +2,7 @@
 #define IALGORITHM_H
 
 #include <QObject>
+#include <QMap>
 #include "adjacencymatrix.h"
 #include "route.h"
 
