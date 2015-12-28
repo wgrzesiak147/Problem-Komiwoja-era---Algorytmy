@@ -73,6 +73,14 @@ int main(int argc, char *argv[])
 //    GeneticAlgorithm * genetic = new GeneticAlgorithm();
 //    qDebug() << "Test4:";
 
+//    Route * testRoute1 = new Route(10,adjMtrx);
+//    testRoute1->makeRandomRoute(0);
+//    qDebug() << "Route1:";
+//    testRoute1->printRoute();
+
+//    qDebug() << "Result:";
+//    Route * resultOfMutation = genetic->makeMutation(testRoute1);
+//    resultOfMutation->printRoute();
 //    for(int i = 0; i < 100000; i++)
 //    {
 //        Route * testRoute1 = new Route(10,adjMtrx);
