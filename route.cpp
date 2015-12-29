@@ -62,22 +62,22 @@ unsigned int Route::getCost(Route::costType costType)
         {
             if((totalTime >= graphData->getStartTime(i)) && (totalTime <= graphData->getEndTime(i)))
             {
-                qDebug() << "Node:" << i << "In time slot";
+                //qDebug() << "Node:" << i << "In time slot";
             }
             else
             {
-                qDebug() << "Node:" << i << "Not in time slot";
+                //qDebug() << "Node:" << i << "Not in time slot";
                 if(totalTime < graphData->getStartTime(i))
                 {
                     unsigned int penalty = (graphData->getStartTime(i) - totalTime) * penaltyRatio;
                     totalPenalty = totalPenalty + penalty;
-                    qDebug() << "Penalty for node" << i << ":" << penalty;
+                    //qDebug() << "Penalty for node" << i << ":" << penalty;
                 }
                 else
                 {
                     unsigned int penalty = (totalTime - graphData->getEndTime(i)) * penaltyRatio;
                     totalPenalty = totalPenalty + penalty;
-                    qDebug() << "Penalty for node:" << i << "=" << penalty;
+                    //qDebug() << "Penalty for node:" << i << "=" << penalty;
                 }
             }
             if(i != (numberOfNodes - 1))
