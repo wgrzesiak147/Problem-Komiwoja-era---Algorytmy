@@ -59,13 +59,13 @@ int main(int argc, char *argv[])
     qDebug() << "getCost(WITHOUT_TIME):" << route2.getCost(Route::WITHOUT_TIME); //Funkcja do sprawdzania kosztu trasy
     qDebug() << "getCost(WITH_TIME):" << route2.getCost(Route::WITH_TIME); //Funkcja liczy koszt z uwzględnieniem przedziałów czasowych
 
-    GeneticAlgorithm * genetic = new GeneticAlgorithm();
-    genetic->setCostType(Route::WITH_TIME);
-    qDebug() << "Final route:";
-    Route * finalRoute;
-    finalRoute = genetic->calculateRoute(matrix,0);
-    finalRoute->printRoute();
-    qDebug() << "Cost:" <<finalRoute->getCost(Route::WITH_TIME);
+//    GeneticAlgorithm * genetic = new GeneticAlgorithm();
+//    genetic->setCostType(Route::WITH_TIME);
+//    qDebug() << "Final route:";
+//    Route * finalRoute;
+//    finalRoute = genetic->calculateRoute(matrix,0);
+//    finalRoute->printRoute();
+//    qDebug() << "Cost:" <<finalRoute->getCost(Route::WITH_TIME);
 
     //Test macierzy
 

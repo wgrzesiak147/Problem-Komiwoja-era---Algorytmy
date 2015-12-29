@@ -17,6 +17,7 @@ bool routeLessThanWithoutTime(Route *route1, Route *route2)
 
 Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsigned int startNode)
 {
+    emit started();
     QList<Route*> routeListToNextRound;
     QList<Route*> routeList;
     QList<Route*> routeListToDoOperations;
@@ -88,6 +89,7 @@ Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsi
     }
     while(roundsWithoutBetterRoute < 10);
 
+    emit finished();
     return currentBestRoute;
 
 }

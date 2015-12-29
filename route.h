@@ -20,6 +20,7 @@ public:
     bool insertNode(unsigned int position, unsigned int numberOfNode);
     bool containsNode(unsigned int nodeNumber);
     void printRoute();
+    QString printRouteToString();
     void clear();
     int at(unsigned int position);
     void makeRandomRoute(unsigned int startNode);

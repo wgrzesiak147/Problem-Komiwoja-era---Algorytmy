@@ -151,6 +151,20 @@ void Route::printRoute()
     }
 }
 
+QString Route::printRouteToString()
+{
+    QString result;
+    result.append("Calculated route: [ ");
+
+    for(unsigned int i = 0; i < numberOfNodes; i++)
+    {
+        result.append(QString::number(route.at(i)));
+        result.append(" ");
+    }
+    result.append("] ");
+    return result;
+}
+
 void Route::clear()
 {
     for(unsigned int i = 0; i < numberOfNodes; i++)
