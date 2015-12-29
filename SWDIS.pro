@@ -19,13 +19,15 @@ SOURCES += main.cpp\
     route.cpp \
     ialgorithm.cpp \
     antscolony.cpp \
-    geneticalgorithm.cpp
+    geneticalgorithm.cpp \
+    adjacencymatrixloader.cpp
 
 HEADERS  += dialog.h \
     adjacencymatrix.h \
     route.h \
     ialgorithm.h \
     antscolony.h \
-    geneticalgorithm.h
+    geneticalgorithm.h \
+    adjacencymatrixloader.h
 
 FORMS    += dialog.ui

@@ -1,0 +1,16 @@
+{
+  "size": 3,
+  "matrix":[
+      {"sourceNode": 0, "destinationNode": 1, "distance": 10, "time": 20}, 
+      {"sourceNode": 0, "destinationNode": 2, "distance": 20, "time": 20},
+      {"sourceNode": 1, "destinationNode": 0, "distance": 30, "time": 20},
+      {"sourceNode": 1, "destinationNode": 2, "distance": 40, "time": 20},
+      {"sourceNode": 2, "destinationNode": 0, "distance": 50, "time": 20},
+      {"sourceNode": 2, "destinationNode": 1, "distance": 60, "time": 20}
+      ],
+  "timeSlots":[
+    {"nodeNumber": 0, "startTime": 0, "endTime": 20},
+    {"nodeNumber": 1, "startTime": 25, "endTime": 30},
+    {"nodeNumber": 2, "startTime": 30, "endTime": 40}
+    ]
+}
