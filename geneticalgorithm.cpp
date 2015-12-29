@@ -5,8 +5,90 @@ GeneticAlgorithm::GeneticAlgorithm()
 
 }
 
-Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix, unsigned int size)
+bool routeLessThanWithTime(Route *route1, Route *route2)
 {
+    return route1->getCost(Route::WITH_TIME) < route2->getCost(Route::WITH_TIME);
+}
+
+bool routeLessThanWithoutTime(Route *route1, Route *route2)
+{
+    return route1->getCost(Route::WITHOUT_TIME) < route2->getCost(Route::WITHOUT_TIME);
+}
+
+Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsigned int startNode)
+{
+    QList<Route*> routeListToNextRound;
+    QList<Route*> routeList;
+    QList<Route*> routeListToDoOperations;
+    Route * currentBestRoute= NULL;
+    unsigned int populationSizeRatio = 10;
+    unsigned int populationSize = adjacencyMatrix->getSize() * populationSizeRatio;
+    unsigned int roundsWithoutBetterRoute = 0;
+    //int numberOfRoutesToNextRound
+    for(unsigned int i = 0; i < populationSize; i++)
+    {
+        Route * tempRoute = new Route(adjacencyMatrix->getSize(),adjacencyMatrix);
+        tempRoute->makeRandomRoute(startNode);
+        routeListToNextRound.append(tempRoute);
+    }
+
+    do
+    {
+        for(int j = 0; j < routeListToNextRound.size(); j++)
+        {
+            routeList.append(routeListToNextRound.at(0));
+            routeListToNextRound.removeFirst();
+        }
+
+        if(costType == Route::WITH_TIME)qSort(routeList.begin(),routeList.end(),routeLessThanWithTime);
+        if(costType == Route::WITHOUT_TIME)qSort(routeList.begin(),routeList.end(),routeLessThanWithoutTime);
+
+        if (currentBestRoute == NULL)
+        {
+            //currentBestRoute = new Route(*routeList.at(0));
+            Route * tempRoute = new Route(routeList.at(0)->getSize(),routeList.at(0)->getAdjacencyMatrix());
+            tempRoute = routeList.at(0);
+            currentBestRoute = tempRoute;
+        }
+        else
+        {
+            if(routeList.at(0)->getCost(costType) < currentBestRoute->getCost(costType))
+            {
+                delete(currentBestRoute);
+                Route * tempRoute = new Route(routeList.at(0)->getSize(),routeList.at(0)->getAdjacencyMatrix());
+                tempRoute = routeList.at(0);
+                //currentBestRoute = new Route(*routeList.at(0));
+                currentBestRoute = tempRoute;
+                roundsWithoutBetterRoute = 0;
+            }
+            else
+            {
+                roundsWithoutBetterRoute++;
+            }
+        }
+
+        int routeListSize = routeList.size();
+        for(int k = 0; k < routeListSize/3 ; k++)
+        {
+              routeListToDoOperations.append(routeList.at(0));
+              routeList.removeFirst();
+        }
+
+        qDeleteAll(routeList);
+        routeList.clear();
+
+        for(int l = 0; l < populationSize/2; l++)
+        {
+            routeListToNextRound.append(crossbreedRoutes(routeListToDoOperations.at(qrand() % routeListToDoOperations.size()),routeListToDoOperations.at(qrand() % routeListToDoOperations.size())));
+        }
+        for(int m = 0; m < populationSize/2; m++)
+        {
+            routeListToNextRound.append(makeMutation(routeListToNextRound.at(qrand() % routeListToNextRound.size())));
+        }
+    }
+    while(roundsWithoutBetterRoute < 10);
+
+    return currentBestRoute;
 
 }
 
@@ -137,4 +219,5 @@ Route *GeneticAlgorithm::makeMutation(Route *route)
 
     return result;
 }
+
 

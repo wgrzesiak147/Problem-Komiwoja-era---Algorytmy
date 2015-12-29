@@ -7,7 +7,7 @@ class AntsColony : public IAlgorithm
 {
 public:
     AntsColony();
-    Route * calculateRoute(AdjacencyMatrix *adjacencyMatrix, unsigned int size);
+    Route * calculateRoute(AdjacencyMatrix *adjacencyMatrix, unsigned int startNode);
 };
 
 #endif // ANTSCOLONY_H

@@ -5,7 +5,7 @@ AntsColony::AntsColony()
 
 }
 
-Route * AntsColony::calculateRoute(AdjacencyMatrix *adjacencyMatrix, unsigned int size)
+Route * AntsColony::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsigned int startNode)
 {
     //algorytm
 }
