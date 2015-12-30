@@ -72,7 +72,7 @@ Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsi
         }
 
         int routeListSize = routeList.size();
-        for(int k = 0; k < routeListSize/3 ; k++)
+        for(int k = 0; k < routeListSize/10 ; k++)
         {
               routeListToDoOperations.append(routeList.at(0));
               routeList.removeFirst();
@@ -81,6 +81,11 @@ Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsi
         qDeleteAll(routeList);
         routeList.clear();
 
+        for(int l = 0; l < 10; l++)
+        {
+            routeListToNextRound.append(crossbreedRoutes(routeListToDoOperations.at(0),routeListToDoOperations.at(1)));
+        }
+
         for(int l = 0; l < populationSize/2; l++)
         {
             routeListToNextRound.append(crossbreedRoutes(routeListToDoOperations.at(qrand() % routeListToDoOperations.size()),routeListToDoOperations.at(qrand() % routeListToDoOperations.size())));
@@ -88,8 +93,8 @@ Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsi
         for(int m = 0; m < populationSize/2; m++)
         {
             routeListToNextRound.append(makeMutation(routeListToNextRound.at(qrand() % routeListToNextRound.size())));
-
         }
+        routeListToNextRound.append(new Route(currentBestRoute));
         qDeleteAll(routeListToDoOperations);
         routeListToDoOperations.clear();
     }
@@ -120,7 +125,7 @@ Route *GeneticAlgorithm::crossbreedRoutes(Route *firstRoute, Route *secondRoute)
     }
     while(!((firstPosition != 0) && (secondPosition != 0)));
 
-    for(unsigned int m = 1; m < firstRoute->getSize(); m++)
+    for(unsigned int m = 0; m < firstRoute->getSize(); m++)
     {
         unusedNodes.append(m);
     }
@@ -137,20 +142,19 @@ Route *GeneticAlgorithm::crossbreedRoutes(Route *firstRoute, Route *secondRoute)
         {
             firstPosition = firstPosition - 1;
         }
-        if(secondPosition != (result->getSize() - 1))
+        if(secondPosition < (result->getSize() - 1))
         {
             secondPosition = secondPosition + 1;
         }
 
     }
     result->insertNode(0,firstRoute->at(0));
+    unusedNodes.removeOne(firstRoute->at(0));
 
     for(unsigned int i = firstPosition; i<=secondPosition; i++)
     {
         result->insertNode(i,firstRoute->at(i));
         unusedNodes.removeOne(firstRoute->at(i));
-        //nodeMap.insert(firstRoute->at(i),secondRoute->at(i));
-        //nodeMap.insert(secondRoute->at(i),firstRoute->at(i));
     }
     for(unsigned int j = 1; j < firstPosition; j++)
     {
@@ -172,10 +176,19 @@ Route *GeneticAlgorithm::crossbreedRoutes(Route *firstRoute, Route *secondRoute)
     {
         if(result->at(n) == -1)
         {
-            unsigned int randomNodePosition = qrand() % unusedNodes.size();
-            result->insertNode(n,unusedNodes.at(randomNodePosition));
-            unusedNodes.removeAt(randomNodePosition);
+            if(unusedNodes.size() != 0)
+            {
+                unsigned int randomNodePosition = qrand() % unusedNodes.size();
+                result->insertNode(n,unusedNodes.at(randomNodePosition));
+                unusedNodes.removeAt(randomNodePosition);
+            }
+            else
+            {
+                qDebug() << "Watch here";
+            }
         }
+
+
     }
     //qDebug() << "First position:" << firstPosition << "Second position" << secondPosition;
     return result;
