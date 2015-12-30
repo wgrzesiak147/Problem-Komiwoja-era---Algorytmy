@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>543</width>
-    <height>470</height>
+    <width>744</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,6 +40,23 @@
       </widget>
      </item>
      <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Liczba powtórzeń:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_2">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>1000</number>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -55,7 +72,7 @@
     </layout>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0,1,0">
+    <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0,1,0,0,0,0,0">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="sizeConstraint">
@@ -199,6 +216,34 @@
       <widget class="QPushButton" name="clearButton">
        <property name="text">
         <string>Wyczyść</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="info1">
+       <property name="text">
+        <string>Średni koszt:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="averageCost">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="info2">
+       <property name="text">
+        <string>Średni czas [ms]:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="averageTime">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>

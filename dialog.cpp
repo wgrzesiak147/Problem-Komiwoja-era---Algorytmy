@@ -41,10 +41,11 @@ void Dialog::onAlgorithmFinished()
 
 void Dialog::on_pushButton_clicked()
 {
-    ui->pushButton->setEnabled(false);
-    ui->groupBox->setEnabled(false);
-    ui->groupBox_2->setEnabled(false);
-    ui->spinBox->setEnabled(false);
+    ui->pushButton->setDisabled(true);
+    ui->groupBox->setDisabled(true);
+    ui->groupBox_2->setDisabled(true);
+    ui->spinBox->setDisabled(true);
+    ui->spinBox_2->setDisabled(true);
     IAlgorithm * algorithm;
     Route * resultRoute;
     QString textToList;
@@ -81,53 +82,57 @@ void Dialog::on_pushButton_clicked()
         cType = Route::WITH_TIME;
     }
 
-    textToList.append("Cost calculation type: ");
-    textToList.append(enumCostTypeToString(cType));
-    stringToList(textToList);
-    textToList.clear();
-
-    algorithm->setCostType(cType);
-
-
-    //algorithm->moveToThread(&algorithmThread);
-
-
     connect(algorithm,SIGNAL(started()),this,SLOT(onAlgorithmStarted()));
     connect(algorithm,SIGNAL(finished()),this,SLOT(onAlgorithmFinished()));
 
-    //algorithmThread.start();
+    double totalTime = 0;
+    double totalCost = 0;
 
-    switch(aType)
+    for(int x = 0; x < ui->spinBox_2->value(); x++)
     {
-    case ANTS_COLONY:
-        break;
+        textToList.append("Cost calculation type: ");
+        textToList.append(enumCostTypeToString(cType));
+        stringToList(textToList);
+        textToList.clear();
 
-    case BRUTE_FORCE:
-        break;
+        algorithm->setCostType(cType);
 
-    case GENETIC:
-        resultRoute = algorithm->calculateRoute(adjacencyMatrix,ui->spinBox->value());
 
-        break;
+        switch(aType)
+        {
+        case ANTS_COLONY:
+            break;
 
-    case SIMULATED_ANNEALING:
-        break;
+        case BRUTE_FORCE:
+            break;
+
+        case GENETIC:
+            resultRoute = algorithm->calculateRoute(adjacencyMatrix,ui->spinBox->value());
+
+            break;
+
+        case SIMULATED_ANNEALING:
+            break;
+        }
+
+        textToList.append(resultRoute->printRouteToString());
+        textToList.append("Cost: ");
+        textToList.append(QString::number(resultRoute->getCost(cType)));
+        totalCost = totalCost + static_cast<double>(resultRoute->getCost(cType));
+        stringToList(textToList);
+        textToList.clear();
+
+
+        textToList.append("Algorithm: \"");
+        textToList.append(enumAlgorithmTypeToString(aType));
+        textToList.append("\" finished. Time: ");
+        textToList.append(QString::number(elapsedTime));
+        totalTime = totalTime + static_cast<double>(elapsedTime);
+        textToList.append("ms.");
+        stringToList(textToList);
+        textToList.clear();
+        delete(resultRoute);
     }
-
-    textToList.append(resultRoute->printRouteToString());
-    textToList.append("Cost: ");
-    textToList.append(QString::number(resultRoute->getCost(cType)));
-    stringToList(textToList);
-    textToList.clear();
-
-
-    textToList.append("Algorithm: \"");
-    textToList.append(enumAlgorithmTypeToString(aType));
-    textToList.append("\" finished. Time: ");
-    textToList.append(QString::number(elapsedTime));
-    textToList.append("ms.");
-    stringToList(textToList);
-    textToList.clear();
 
 
     //<< "Algorithm: " << aType << " finished. Time: " << elapsedTime << "ms.";
@@ -136,7 +141,10 @@ void Dialog::on_pushButton_clicked()
     ui->groupBox->setEnabled(true);
     ui->groupBox_2->setEnabled(true);
     ui->spinBox->setEnabled(true);
-    delete(resultRoute);
+    ui->spinBox_2->setEnabled(true);
+    ui->averageCost->setText(QString::number(totalCost/static_cast<double>(ui->spinBox_2->value())));
+    ui->averageTime->setText(QString::number(totalTime/static_cast<double>(ui->spinBox_2->value())));
+
     algorithm->deleteLater();
 
 }

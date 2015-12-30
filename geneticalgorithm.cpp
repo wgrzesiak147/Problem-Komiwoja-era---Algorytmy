@@ -22,7 +22,7 @@ Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsi
     QList<Route*> routeList;
     QList<Route*> routeListToDoOperations;
     Route * currentBestRoute= NULL;
-    unsigned int populationSizeRatio = 10;
+    unsigned int populationSizeRatio = 8;
     unsigned int populationSize = adjacencyMatrix->getSize() * populationSizeRatio;
     unsigned int roundsWithoutBetterRoute = 0;
     //int numberOfRoutesToNextRound
@@ -98,7 +98,7 @@ Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsi
         qDeleteAll(routeListToDoOperations);
         routeListToDoOperations.clear();
     }
-    while(roundsWithoutBetterRoute < 10);
+    while(roundsWithoutBetterRoute < 12);
 
     qDeleteAll(routeListToNextRound);
     routeListToNextRound.clear();
