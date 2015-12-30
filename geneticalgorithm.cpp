@@ -35,7 +35,8 @@ Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsi
 
     do
     {
-        for(int j = 0; j < routeListToNextRound.size(); j++)
+        int routeListToNextRoundSize = routeListToNextRound.size();
+        for(int j = 0; j < routeListToNextRoundSize; j++)
         {
             routeList.append(routeListToNextRound.at(0));
             routeListToNextRound.removeFirst();
@@ -47,8 +48,9 @@ Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsi
         if (currentBestRoute == NULL)
         {
             //currentBestRoute = new Route(*routeList.at(0));
-            Route * tempRoute = new Route(routeList.at(0)->getSize(),routeList.at(0)->getAdjacencyMatrix());
-            tempRoute = routeList.at(0);
+            Route * tempRoute = new Route(routeList.at(0));
+
+            //*tempRoute = *routeList.at(0);
             currentBestRoute = tempRoute;
         }
         else
@@ -56,8 +58,9 @@ Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsi
             if(routeList.at(0)->getCost(costType) < currentBestRoute->getCost(costType))
             {
                 delete(currentBestRoute);
-                Route * tempRoute = new Route(routeList.at(0)->getSize(),routeList.at(0)->getAdjacencyMatrix());
-                tempRoute = routeList.at(0);
+                Route * tempRoute = new Route(routeList.at(0));
+                //Route * tempRoute = new Route(routeList.at(0)->getSize(),routeList.at(0)->getAdjacencyMatrix());
+                //*tempRoute = *routeList.at(0);
                 //currentBestRoute = new Route(*routeList.at(0));
                 currentBestRoute = tempRoute;
                 roundsWithoutBetterRoute = 0;
@@ -85,10 +88,17 @@ Route * GeneticAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsi
         for(int m = 0; m < populationSize/2; m++)
         {
             routeListToNextRound.append(makeMutation(routeListToNextRound.at(qrand() % routeListToNextRound.size())));
+
         }
+        qDeleteAll(routeListToDoOperations);
+        routeListToDoOperations.clear();
     }
     while(roundsWithoutBetterRoute < 10);
 
+    qDeleteAll(routeListToNextRound);
+    routeListToNextRound.clear();
+    //qDeleteAll(routeListToDoOperations);
+    //routeListToDoOperations.clear();
     emit finished();
     return currentBestRoute;
 

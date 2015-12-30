@@ -18,18 +18,22 @@ Route::Route(unsigned int size, AdjacencyMatrix * graph ,QObject *parent): QObje
     }
 }
 
-/*Route::Route(Route *route, QObject *parent)
+Route::Route(Route *sourceRoute)
 {
-    if(route != NULL)
+    //Route(sourceRoute->getSize(),sourceRoute->getAdjacencyMatrix());
+    numberOfNodes = sourceRoute->getSize();
+    graphData = sourceRoute->getAdjacencyMatrix();
+    for(unsigned int i=0; i<numberOfNodes; i++)
     {
-        Route(route->getSize(),route->getAdjacencyMatrix(),parent);
-        this->clear();
-        for(unsigned int i = 0; i < route->getSize(); i++)
-        {
-            this->insertNode(i,route->at(i));
-        }
+        route.append(-1);
     }
-}*/
+
+    for(unsigned int i=0; i<numberOfNodes; i++)
+    {
+        insertNode(i,sourceRoute->at(i));
+    }
+
+}
 
 unsigned int Route::getCost(Route::costType costType)
 {

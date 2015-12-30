@@ -26,6 +26,7 @@ void Dialog::stringToList(QString listElement)
 
 
     ui->listWidget->addItem(string);
+    ui->listWidget->scrollToBottom();
 }
 
 void Dialog::onAlgorithmStarted()

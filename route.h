@@ -12,7 +12,7 @@ public:
     enum costType{WITHOUT_TIME = 1, WITH_TIME = 2};
     //explicit Route(unsigned int size,QObject *parent = 0);
     Route(unsigned int size, AdjacencyMatrix * graph ,QObject *parent = 0);
-    //Route(Route * route ,QObject *parent = 0);
+    Route(Route * sourceRoute);
     //unsigned int getTime();
     unsigned int getCost(Route::costType costType = WITHOUT_TIME);
     unsigned int getSize();
