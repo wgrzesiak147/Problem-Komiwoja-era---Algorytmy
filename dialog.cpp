@@ -69,6 +69,7 @@ void Dialog::on_pushButton_clicked()
 
     if(ui->simulatedAnnealing->isChecked())
     {
+        algorithm = new AnnealingAlgorithm;
         aType = SIMULATED_ANNEALING;
     }
 
@@ -112,6 +113,7 @@ void Dialog::on_pushButton_clicked()
             break;
 
         case SIMULATED_ANNEALING:
+            resultRoute = algorithm->calculateRoute(adjacencyMatrix,ui->spinBox->value());
             break;
         }
 
