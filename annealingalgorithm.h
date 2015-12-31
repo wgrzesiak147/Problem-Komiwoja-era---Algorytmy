@@ -9,7 +9,8 @@ public:
    AnnealingAlgorithm();
    Route * calculateRoute(AdjacencyMatrix *adjacencyMatrix, unsigned int startNode);
 private:
-   Route * adjacentSolution(Route& sol);
+   Route * makeMutation(Route * route);
+   //Route * adjacentSolution(Route *sol);
 };
 
 #endif // ANNEALINGALGORITHM_H
