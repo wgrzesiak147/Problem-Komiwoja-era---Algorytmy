@@ -6,11 +6,13 @@
 class AnnealingAlgorithm  : public IAlgorithm
 {
 public:
+   static double Temperature;
+   static double AnnealingParameter;
    AnnealingAlgorithm();
    Route * calculateRoute(AdjacencyMatrix *adjacencyMatrix, unsigned int startNode);
 private:
    Route * makeMutation(Route * route);
-   //Route * adjacentSolution(Route *sol);
+
 };
 
 #endif // ANNEALINGALGORITHM_H

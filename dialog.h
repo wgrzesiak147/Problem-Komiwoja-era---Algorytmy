@@ -50,6 +50,7 @@ private:
     qint64 elapsedTime = 0;
     QString enumAlgorithmTypeToString(algorithmType type);
     QString enumCostTypeToString(Route::costType type);
+    void initializeAnnealingParameters();
 
 };
 
