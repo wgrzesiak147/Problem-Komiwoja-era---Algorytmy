@@ -29,7 +29,7 @@ Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  un
         Route * _sol = new Route(sol);				//_sol - rozwiązanie sąsiednie
 
         int costSol, cost_Sol, costBestSol;
-        costSol =   sol->getCost(Route::WITHOUT_TIME);
+        costSol =   sol->getCost(costType);
         costBestSol = costSol;
 
         ////////////// algorytm wyżarzania
@@ -39,7 +39,7 @@ Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  un
         while (!(worseSol > worseAcceptable))
         {
             _sol = makeMutation(sol);		// rozwiązanie sąsiednie
-            cost_Sol = _sol->getCost(Route::WITHOUT_TIME);
+            cost_Sol = _sol->getCost(costType);
 
             //  sprawdzenie czy nowe rozwiązanie jest lepsze od najlepszego
             if (cost_Sol < costBestSol)
