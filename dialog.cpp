@@ -70,6 +70,7 @@ void Dialog::on_pushButton_clicked()
     if(ui->simulatedAnnealing->isChecked())
     {
         aType = SIMULATED_ANNEALING;
+        algorithm = new AnnealingAlgorithm;
     }
 
     if(ui->withoutTime->isChecked())
@@ -112,7 +113,10 @@ void Dialog::on_pushButton_clicked()
             break;
 
         case SIMULATED_ANNEALING:
-            break;
+            //InitializeAnnealingParameters();
+
+            resultRoute = algorithm->calculateRoute(adjacencyMatrix,ui->spinBox->value());
+           break;
         }
 
         textToList.append(resultRoute->printRouteToString());
@@ -146,6 +150,12 @@ void Dialog::on_pushButton_clicked()
     ui->averageTime->setText(QString::number(totalTime/static_cast<double>(ui->spinBox_2->value())));
 
     algorithm->deleteLater();
+
+}
+void Dialog::initializeAnnealingParameters()
+{
+     AnnealingAlgorithm::AnnealingParameter  = ui->AnnealingSpinBox->value();
+     AnnealingAlgorithm::Temperature  = ui->TemperatureSpinBox->value();
 
 }
 

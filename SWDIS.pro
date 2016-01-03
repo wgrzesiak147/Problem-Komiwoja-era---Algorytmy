@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     ialgorithm.cpp \
     antscolony.cpp \
     geneticalgorithm.cpp \
-    adjacencymatrixloader.cpp
+    adjacencymatrixloader.cpp \
+    annealingalgorithm.cpp
 
 HEADERS  += dialog.h \
     adjacencymatrix.h \
@@ -28,6 +29,7 @@ HEADERS  += dialog.h \
     ialgorithm.h \
     antscolony.h \
     geneticalgorithm.h \
-    adjacencymatrixloader.h
+    adjacencymatrixloader.h \
+    annealingalgorithm.h
 
 FORMS    += dialog.ui

@@ -5,6 +5,7 @@
 #include "route.h"
 #include "ialgorithm.h"
 #include "geneticalgorithm.h"
+#include "annealingalgorithm.h"
 
 int main(int argc, char *argv[])
 {
