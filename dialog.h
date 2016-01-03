@@ -39,6 +39,14 @@ private slots:
 
     void on_clearButton_clicked();
 
+    void on_simulatedAnnealing_clicked();
+
+    void on_bruteForce_clicked();
+
+    void on_genetic_clicked();
+
+    void on_antsColony_clicked();
+
 private:
     Ui::Dialog *ui;
     QFileDialog fileDialog;

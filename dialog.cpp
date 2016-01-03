@@ -7,8 +7,10 @@ Dialog::Dialog(QWidget *parent) :
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
+    ui->groupBox_3->setVisible(false);
     QTime time = QTime::currentTime();
     qsrand((uint)time.msec());
+    //qDebug() << timer.clockType();
 
 }
 
@@ -46,6 +48,7 @@ void Dialog::on_pushButton_clicked()
     ui->groupBox_2->setDisabled(true);
     ui->spinBox->setDisabled(true);
     ui->spinBox_2->setDisabled(true);
+    //QThread * algorithmThread = new QThread();
     IAlgorithm * algorithm;
     Route * resultRoute;
     QString textToList;
@@ -238,3 +241,23 @@ QString Dialog::enumCostTypeToString(Route::costType type)
 
 }
 
+
+void Dialog::on_simulatedAnnealing_clicked()
+{
+    ui->groupBox_3->setVisible(true);
+}
+
+void Dialog::on_bruteForce_clicked()
+{
+    ui->groupBox_3->setVisible(false);
+}
+
+void Dialog::on_genetic_clicked()
+{
+    ui->groupBox_3->setVisible(false);
+}
+
+void Dialog::on_antsColony_clicked()
+{
+    ui->groupBox_3->setVisible(false);
+}
