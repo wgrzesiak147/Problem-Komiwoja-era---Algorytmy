@@ -86,8 +86,8 @@ void Dialog::on_pushButton_clicked()
         cType = Route::WITH_TIME;
     }
 
-    connect(algorithm,SIGNAL(started()),this,SLOT(onAlgorithmStarted()));
-    connect(algorithm,SIGNAL(finished()),this,SLOT(onAlgorithmFinished()));
+    connect(algorithm,&IAlgorithm::started,this,&Dialog::onAlgorithmStarted);
+    connect(algorithm,&IAlgorithm::finished,this,&Dialog::onAlgorithmFinished);
 
     double totalTime = 0;
     double totalCost = 0;

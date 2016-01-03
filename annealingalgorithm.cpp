@@ -9,6 +9,7 @@ double AnnealingAlgorithm::AnnealingParameter = 1;
 
 Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsigned int startNode)
 {
+        emit started();
         double t =Temperature; //temperatura początkowa
         double p =AnnealingParameter; //współczynnik
         int n = adjacencyMatrix->getSize(); //liczba miast
@@ -32,7 +33,7 @@ Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  un
         costSol =   sol->getCost(costType);
         costBestSol = costSol;
 
-        ////////////// algorytm wyżarzania
+        // algorytm wyżarzania
         //double temp = costSol;
         double temp = t;
 
@@ -73,6 +74,7 @@ Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  un
 
             // przerywamy dzialanie algorytmu, jesli 15%n razy znaleziono gorsze rozwiazanie
         }
+        emit finished();
 
         return bestSol;
 }
