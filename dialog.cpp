@@ -180,6 +180,7 @@ void Dialog::on_matrixLoadButton_clicked()
             if(adjacencyMatrix != NULL)
             {
                 delete(adjacencyMatrix);
+                adjacencyMatrix = loader.getAdjacencyMatrixFromFile(&file);
             }
             else
             {
@@ -195,6 +196,7 @@ void Dialog::on_matrixLoadButton_clicked()
             {
                 ui->pushButton->setEnabled(false);
             }
+            disconnect(&loader,SIGNAL(errorString(QString)),this,SLOT(stringToList(QString)));
         }
     }
 }
