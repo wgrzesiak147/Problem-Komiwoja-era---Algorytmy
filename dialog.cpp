@@ -118,8 +118,7 @@ void Dialog::on_pushButton_clicked()
             break;
 
         case SIMULATED_ANNEALING:
-            //InitializeAnnealingParameters();
-
+            initializeAnnealingParameters();
             resultRoute = algorithm->calculateRoute(adjacencyMatrix,ui->spinBox->value());
             break;
         }
@@ -159,6 +158,7 @@ void Dialog::on_pushButton_clicked()
 }
 void Dialog::initializeAnnealingParameters()
 {
+     AnnealingAlgorithm::EndTemperature = ui->EndTemperatureSpinBox->value();
      AnnealingAlgorithm::AnnealingParameter  = ui->AnnealingSpinBox->value();
      AnnealingAlgorithm::Temperature  = ui->TemperatureSpinBox->value();
 
