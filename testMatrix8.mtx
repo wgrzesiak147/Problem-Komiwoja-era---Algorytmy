@@ -1,0 +1,383 @@
+{
+    "matrix": [
+        {
+            "destinationNode": 1,
+            "distance": 44,
+            "sourceNode": 0,
+            "time": 44
+        },
+        {
+            "destinationNode": 2,
+            "distance": 13,
+            "sourceNode": 0,
+            "time": 11
+        },
+        {
+            "destinationNode": 3,
+            "distance": 18,
+            "sourceNode": 0,
+            "time": 18
+        },
+        {
+            "destinationNode": 4,
+            "distance": 2,
+            "sourceNode": 0,
+            "time": 2
+        },
+        {
+            "destinationNode": 5,
+            "distance": 41,
+            "sourceNode": 0,
+            "time": 40
+        },
+        {
+            "destinationNode": 6,
+            "distance": 30,
+            "sourceNode": 0,
+            "time": 29
+        },
+        {
+            "destinationNode": 7,
+            "distance": 24,
+            "sourceNode": 0,
+            "time": 21
+        },
+        {
+            "destinationNode": 0,
+            "distance": 45,
+            "sourceNode": 1,
+            "time": 51
+        },
+        {
+            "destinationNode": 2,
+            "distance": 29,
+            "sourceNode": 1,
+            "time": 28
+        },
+        {
+            "destinationNode": 3,
+            "distance": 35,
+            "sourceNode": 1,
+            "time": 37
+        },
+        {
+            "destinationNode": 4,
+            "distance": 40,
+            "sourceNode": 1,
+            "time": 40
+        },
+        {
+            "destinationNode": 5,
+            "distance": 22,
+            "sourceNode": 1,
+            "time": 23
+        },
+        {
+            "destinationNode": 6,
+            "distance": 50,
+            "sourceNode": 1,
+            "time": 53
+        },
+        {
+            "destinationNode": 7,
+            "distance": 1,
+            "sourceNode": 1,
+            "time": 1
+        },
+        {
+            "destinationNode": 0,
+            "distance": 17,
+            "sourceNode": 2,
+            "time": 17
+        },
+        {
+            "destinationNode": 1,
+            "distance": 25,
+            "sourceNode": 2,
+            "time": 27
+        },
+        {
+            "destinationNode": 3,
+            "distance": 36,
+            "sourceNode": 2,
+            "time": 37
+        },
+        {
+            "destinationNode": 4,
+            "distance": 32,
+            "sourceNode": 2,
+            "time": 34
+        },
+        {
+            "destinationNode": 5,
+            "distance": 6,
+            "sourceNode": 2,
+            "time": 5
+        },
+        {
+            "destinationNode": 6,
+            "distance": 48,
+            "sourceNode": 2,
+            "time": 44
+        },
+        {
+            "destinationNode": 7,
+            "distance": 20,
+            "sourceNode": 2,
+            "time": 20
+        },
+        {
+            "destinationNode": 0,
+            "distance": 28,
+            "sourceNode": 3,
+            "time": 26
+        },
+        {
+            "destinationNode": 1,
+            "distance": 19,
+            "sourceNode": 3,
+            "time": 17
+        },
+        {
+            "destinationNode": 2,
+            "distance": 15,
+            "sourceNode": 3,
+            "time": 17
+        },
+        {
+            "destinationNode": 4,
+            "distance": 4,
+            "sourceNode": 3,
+            "time": 4
+        },
+        {
+            "destinationNode": 5,
+            "distance": 21,
+            "sourceNode": 3,
+            "time": 23
+        },
+        {
+            "destinationNode": 6,
+            "distance": 22,
+            "sourceNode": 3,
+            "time": 20
+        },
+        {
+            "destinationNode": 7,
+            "distance": 21,
+            "sourceNode": 3,
+            "time": 22
+        },
+        {
+            "destinationNode": 0,
+            "distance": 37,
+            "sourceNode": 4,
+            "time": 34
+        },
+        {
+            "destinationNode": 1,
+            "distance": 9,
+            "sourceNode": 4,
+            "time": 8
+        },
+        {
+            "destinationNode": 2,
+            "distance": 3,
+            "sourceNode": 4,
+            "time": 3
+        },
+        {
+            "destinationNode": 3,
+            "distance": 22,
+            "sourceNode": 4,
+            "time": 21
+        },
+        {
+            "destinationNode": 5,
+            "distance": 9,
+            "sourceNode": 4,
+            "time": 9
+        },
+        {
+            "destinationNode": 6,
+            "distance": 19,
+            "sourceNode": 4,
+            "time": 16
+        },
+        {
+            "destinationNode": 7,
+            "distance": 29,
+            "sourceNode": 4,
+            "time": 30
+        },
+        {
+            "destinationNode": 0,
+            "distance": 7,
+            "sourceNode": 5,
+            "time": 7
+        },
+        {
+            "destinationNode": 1,
+            "distance": 23,
+            "sourceNode": 5,
+            "time": 22
+        },
+        {
+            "destinationNode": 2,
+            "distance": 31,
+            "sourceNode": 5,
+            "time": 35
+        },
+        {
+            "destinationNode": 3,
+            "distance": 12,
+            "sourceNode": 5,
+            "time": 13
+        },
+        {
+            "destinationNode": 4,
+            "distance": 38,
+            "sourceNode": 5,
+            "time": 40
+        },
+        {
+            "destinationNode": 6,
+            "distance": 49,
+            "sourceNode": 5,
+            "time": 56
+        },
+        {
+            "destinationNode": 7,
+            "distance": 38,
+            "sourceNode": 5,
+            "time": 36
+        },
+        {
+            "destinationNode": 0,
+            "distance": 37,
+            "sourceNode": 6,
+            "time": 33
+        },
+        {
+            "destinationNode": 1,
+            "distance": 11,
+            "sourceNode": 6,
+            "time": 11
+        },
+        {
+            "destinationNode": 2,
+            "distance": 15,
+            "sourceNode": 6,
+            "time": 16
+        },
+        {
+            "destinationNode": 3,
+            "distance": 4,
+            "sourceNode": 6,
+            "time": 4
+        },
+        {
+            "destinationNode": 4,
+            "distance": 28,
+            "sourceNode": 6,
+            "time": 30
+        },
+        {
+            "destinationNode": 5,
+            "distance": 5,
+            "sourceNode": 6,
+            "time": 5
+        },
+        {
+            "destinationNode": 7,
+            "distance": 25,
+            "sourceNode": 6,
+            "time": 23
+        },
+        {
+            "destinationNode": 0,
+            "distance": 22,
+            "sourceNode": 7,
+            "time": 21
+        },
+        {
+            "destinationNode": 1,
+            "distance": 20,
+            "sourceNode": 7,
+            "time": 19
+        },
+        {
+            "destinationNode": 2,
+            "distance": 11,
+            "sourceNode": 7,
+            "time": 11
+        },
+        {
+            "destinationNode": 3,
+            "distance": 17,
+            "sourceNode": 7,
+            "time": 15
+        },
+        {
+            "destinationNode": 4,
+            "distance": 4,
+            "sourceNode": 7,
+            "time": 4
+        },
+        {
+            "destinationNode": 5,
+            "distance": 11,
+            "sourceNode": 7,
+            "time": 9
+        },
+        {
+            "destinationNode": 6,
+            "distance": 12,
+            "sourceNode": 7,
+            "time": 13
+        }
+    ],
+    "size": 8,
+    "timeSlots": [
+        {
+            "endTime": 0,
+            "nodeNumber": 0,
+            "startTime": 0
+        },
+        {
+            "endTime": 0,
+            "nodeNumber": 1,
+            "startTime": 0
+        },
+        {
+            "endTime": 0,
+            "nodeNumber": 2,
+            "startTime": 0
+        },
+        {
+            "endTime": 0,
+            "nodeNumber": 3,
+            "startTime": 0
+        },
+        {
+            "endTime": 0,
+            "nodeNumber": 4,
+            "startTime": 0
+        },
+        {
+            "endTime": 0,
+            "nodeNumber": 5,
+            "startTime": 0
+        },
+        {
+            "endTime": 0,
+            "nodeNumber": 6,
+            "startTime": 0
+        },
+        {
+            "endTime": 0,
+            "nodeNumber": 7,
+            "startTime": 0
+        }
+    ]
+}
