@@ -184,6 +184,7 @@ int Route::at(unsigned int position)
 
 void Route::makeRandomRoute(unsigned int startNode)
 {
+    currentStartNode = startNode;
     QList<unsigned int> nodeList;
     unsigned int randNode = 0;
     for(unsigned int i=0; i<numberOfNodes; i++)
