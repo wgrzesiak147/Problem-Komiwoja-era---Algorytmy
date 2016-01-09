@@ -62,6 +62,7 @@ void Dialog::on_pushButton_clicked()
     if(ui->bruteForce->isChecked())
     {
         aType = BRUTE_FORCE;
+        algorithm = new BruteForceAlgorithm();
     }
 
     if(ui->genetic->isChecked())
@@ -108,6 +109,7 @@ void Dialog::on_pushButton_clicked()
             break;
 
         case BRUTE_FORCE:
+            resultRoute = algorithm->calculateRoute(adjacencyMatrix,ui->spinBox->value());
             break;
 
         case GENETIC:
@@ -119,7 +121,7 @@ void Dialog::on_pushButton_clicked()
             //InitializeAnnealingParameters();
 
             resultRoute = algorithm->calculateRoute(adjacencyMatrix,ui->spinBox->value());
-           break;
+            break;
         }
 
         textToList.append(resultRoute->printRouteToString());

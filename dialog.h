@@ -13,6 +13,7 @@
 #include "antscolony.h"
 #include "geneticalgorithm.h"
 #include "annealingalgorithm.h"
+#include "bruteforcealgorithm.h"
 
 namespace Ui {
 class Dialog;
