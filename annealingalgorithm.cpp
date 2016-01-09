@@ -4,6 +4,7 @@ AnnealingAlgorithm::AnnealingAlgorithm()
 {
 
 }
+double AnnealingAlgorithm::EndTemperature = 10;
 double AnnealingAlgorithm::Temperature = 1000;
 double AnnealingAlgorithm::AnnealingParameter = 1;
 
@@ -11,13 +12,14 @@ Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  un
 {
         emit started();
         double t =Temperature; //temperatura początkowa
+        double tempEnd = EndTemperature;
         double p =AnnealingParameter; //współczynnik
         int n = adjacencyMatrix->getSize(); //liczba miast
 
-        int worseSol = 0; // licznik znalezionych gorszych rozwiazan (odrzuconych)
+       // int worseSol = 0; // licznik znalezionych gorszych rozwiazan (odrzuconych)
 
         // jesli algorytm 15%n razy odrzuci rozwiazanie, przerywamy dzialanie
-        int worseAcceptable = 0.15 * n; // akceptowalna liczba gorszych rozwiazan w danym kroku
+      //  int worseAcceptable = 0.15 * n; // akceptowalna liczba gorszych rozwiazan w danym kroku
 
 
         //ROZWIAZANIE POCZATKOWE"
@@ -37,7 +39,7 @@ Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  un
         //double temp = costSol;
         double temp = t;
 
-        while (!(worseSol > worseAcceptable))
+        while (temp>tempEnd)//!(worseSol > worseAcceptable))
         {
             _sol = makeMutation(sol);		// rozwiązanie sąsiednie
             cost_Sol = _sol->getCost(costType);
@@ -54,11 +56,11 @@ Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  un
                 sol = _sol;
                 costSol = cost_Sol;
 
-                worseSol = 0;
+                //worseSol = 0;
             }
             else
             {
-                worseSol++;
+               // worseSol++;
                 double x = (rand() % 10000) / 10000.0;	// losowa liczba z zakresu <0, 1)
 
 
@@ -77,6 +79,79 @@ Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  un
         emit finished();
 
         return bestSol;
+}
+
+Route* AnnealingAlgorithm::dupa(AdjacencyMatrix *adjacencyMatrix,  unsigned int startNode)
+{
+
+    double temp0=1000, temp_end=10, temp=temp0, tempo_schladzania=0.99;
+    int populacja=10, iteracjeALL=0;
+
+
+
+    //cout << "generuje przykladowe rozwiazanie: " << endl;
+
+    Route* rozw_pocz_P = new Route(adjacencyMatrix->getSize(),adjacencyMatrix);
+    rozw_pocz_P->makeRandomRoute(startNode);
+    Route* rozw_pocz = new Route(adjacencyMatrix->getSize(),adjacencyMatrix);
+    //Route * rozw_best, rozw_kandydat;
+/*
+    srand ( time(NULL) );
+
+
+    rozw_pocz->makeRandomRoute(startNode);
+
+
+    rozw_best =  new Route(rozw_pocz);
+
+
+    while (temp>temp_end)
+    {
+        flaga=0;
+
+        for (int i=0; i<populacja; i++)
+        {
+            rozw_kandydat = wyzarzanieObrot(rozw_best, temp, temp0);
+            if (rozw_kandydat.back()==finish)
+            {
+                if (sprawdzRozwWyzarzania(rozw_best, rozw_kandydat)==true)
+                {
+                    //cout << "rozw dobre\t";
+                    if (flaga!=0) rozw_kandydat=popping(rozw_kandydat);
+                    if ((policzWektor(rozw_kandydat)<policzWektor(rozw_best) && rozw_kandydat.size()<=rozw_best.size()) || (policzWektor(rozw_kandydat)<=policzWektor(rozw_best) && rozw_kandydat.size()<rozw_best.size()))
+                    {
+                        //cout << "nowe rozw\t";
+                        rozw_best.clear();
+                        rozw_best=rozw_kandydat;
+
+                        //pokazSciezke(rozw_best);
+                    }
+                }
+            }
+        }
+        temp=tempo_schladzania*temp;
+        iteracjeALL++;
+    }
+
+
+    cout << "\nrozw pocz:\n";
+    pokazSciezke(rozw_pocz);
+    cout << "koszt = " << policzWektor(rozw_pocz);
+    cout << "\nrozw koncowe:\n";
+    pokazSciezke(rozw_best);
+    cout << "koszt = " << policzWektor(rozw_best);
+//    for (int i=0; i<hosty-1; i++)
+//    {
+//        rozw_pocz_P.push_back((r=((double) rand() / (RAND_MAX))));
+//    }
+//
+//    for (unsigned int i=0; i<rozw_pocz_P.size(); i++)
+//    {
+//        cout << rozw_pocz_P[i] << "\t";
+//    }
+//    cout << endl;
+*/
+    return rozw_pocz;
 }
 
 Route *AnnealingAlgorithm::makeMutation(Route *route)
