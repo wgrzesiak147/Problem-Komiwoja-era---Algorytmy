@@ -219,7 +219,7 @@ QString Dialog::enumAlgorithmTypeToString(algorithmType type)
     switch(type)
     {
     case ANTS_COLONY:
-        return QString("Ant colony");
+        return QString("Ants colony");
         break;
 
     case BRUTE_FORCE:

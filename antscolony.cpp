@@ -8,7 +8,7 @@ AntsColony::AntsColony()
 Route * AntsColony::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsigned int startNode)
 {
 
-
+    emit started();
     Route * startRoute = new Route(adjacencyMatrix->getSize(),adjacencyMatrix);
     startRoute->makeRandomRoute(startNode);
 
@@ -33,7 +33,7 @@ Route * AntsColony::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  unsigned i
         makeMutation(nextRoute);
 
     }
-
+    emit finished();
     return startRoute;
 }
 

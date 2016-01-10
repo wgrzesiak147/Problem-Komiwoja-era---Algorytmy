@@ -3,6 +3,8 @@
 
 #include "ialgorithm.h"
 
+//Algorytm nie działa tak jak powinien, kod do poprawki
+
 class AntsColony : public IAlgorithm
 {
 public:
