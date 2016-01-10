@@ -11,7 +11,6 @@ public:
    static double EndTemperature;
    AnnealingAlgorithm();
    Route * calculateRoute(AdjacencyMatrix *adjacencyMatrix, unsigned int startNode);
-   Route * dupa(AdjacencyMatrix *adjacencyMatrix, unsigned int startNode);
 private:
    Route * makeMutation(Route * route);
 

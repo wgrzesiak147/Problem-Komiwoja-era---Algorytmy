@@ -8,6 +8,8 @@ class AntsColony : public IAlgorithm
 public:
     AntsColony();
     Route * calculateRoute(AdjacencyMatrix *adjacencyMatrix, unsigned int startNode);
+private:
+    Route * makeMutation(Route * route);
 };
 
 #endif // ANTSCOLONY_H
