@@ -57,6 +57,7 @@ void Dialog::on_pushButton_clicked()
     if(ui->antsColony->isChecked())
     {
         aType = ANTS_COLONY;
+        algorithm = new AntsColony();
     }
 
     if(ui->bruteForce->isChecked())
@@ -106,6 +107,7 @@ void Dialog::on_pushButton_clicked()
         switch(aType)
         {
         case ANTS_COLONY:
+            resultRoute = algorithm->calculateRoute(adjacencyMatrix,ui->spinBox->value());
             break;
 
         case BRUTE_FORCE:
@@ -158,9 +160,13 @@ void Dialog::on_pushButton_clicked()
 }
 void Dialog::initializeAnnealingParameters()
 {
-     AnnealingAlgorithm::EndTemperature = ui->EndTemperatureSpinBox->value();
      AnnealingAlgorithm::AnnealingParameter  = ui->AnnealingSpinBox->value();
-     AnnealingAlgorithm::Temperature  = ui->TemperatureSpinBox->value();
+     if(ui->EndTemperatureSpinBox->value() < ui->TemperatureSpinBox->value())
+     {
+         AnnealingAlgorithm::EndTemperature = ui->EndTemperatureSpinBox->value();
+         AnnealingAlgorithm::Temperature  = ui->TemperatureSpinBox->value();
+     }
+
 
 }
 
