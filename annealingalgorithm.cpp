@@ -14,13 +14,6 @@ Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  un
         double t =Temperature; //temperatura początkowa
         double tempEnd = EndTemperature;
         double p =AnnealingParameter; //współczynnik
-        int n = adjacencyMatrix->getSize(); //liczba miast
-
-       // int worseSol = 0; // licznik znalezionych gorszych rozwiazan (odrzuconych)
-
-        // jesli algorytm 15%n razy odrzuci rozwiazanie, przerywamy dzialanie
-      //  int worseAcceptable = 0.15 * n; // akceptowalna liczba gorszych rozwiazan w danym kroku
-
 
         //ROZWIAZANIE POCZATKOWE"
 
@@ -28,15 +21,14 @@ Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  un
         sol->makeRandomRoute(startNode);
 
 
-        Route * bestSol = new Route(sol);			// wylosowane rozwiązanie jest automatycznie najlepszym, ponieważ jest to jedyne rozwiązanie
-        Route * _sol = new Route(sol);				//_sol - rozwiązanie sąsiednie
+        Route * bestSol = new Route(sol);// wylosowane rozwiązanie jest automatycznie najlepszym, ponieważ jest to jedyne rozwiązanie
+        Route * _sol = new Route(sol);	//_sol - rozwiązanie sąsiednie
 
         int costSol, cost_Sol, costBestSol;
         costSol =   sol->getCost(costType);
         costBestSol = costSol;
 
         // algorytm wyżarzania
-        //double temp = costSol;
         double temp = t;
 
         while (temp>tempEnd)//!(worseSol > worseAcceptable))
@@ -74,8 +66,7 @@ Route * AnnealingAlgorithm::calculateRoute(AdjacencyMatrix *adjacencyMatrix,  un
             }
             temp *= p; // zmniejszamy temperature wg zadanego wspolczynnika
 
-            // przerywamy dzialanie algorytmu, jesli 15%n razy znaleziono gorsze rozwiazanie
-        }
+        } //przerywamy dzialanie algorytu jeśli przekroczymy wartość temperatury końcowej
         emit finished();
 
         return bestSol;
